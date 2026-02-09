@@ -1,0 +1,53 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": [
+            "ES2022",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "checkJs": false,
+        "strict": true,
+        "strictNullChecks": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "incremental": true,
+        "declaration": true,
+        "declarationMap": true,
+        "composite": false,
+        "paths": {
+            "@quaso/db": [
+                "./packages/db/src/index.ts"
+            ],
+            "@quaso/db/*": [
+                "./packages/db/src/*"
+            ],
+            "@quaso/shared": [
+                "./packages/shared/src/index.ts"
+            ],
+            "@quaso/shared/*": [
+                "./packages/shared/src/*"
+            ],
+            "@quaso/ai": [
+                "./packages/ai/src/index.ts"
+            ],
+            "@quaso/ai/*": [
+                "./packages/ai/src/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        ".next",
+        ".turbo"
+    ]
+}
