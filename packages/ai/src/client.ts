@@ -8,9 +8,9 @@ import { Ollama } from 'ollama';
 import { AI_MODELS } from '@quaso/shared';
 import { SYSTEM_PROMPT } from './prompts';
 
-// Initialize Ollama client
+// Initialize Ollama client (local instance)
 const ollama = new Ollama({
-    host: process.env.OLLAMA_CLOUD_URL || 'https://cloud.ollama.com',
+    host: process.env.OLLAMA_BASE_URL || 'http://localhost:11434',
 });
 
 export interface AnalysisResult {
