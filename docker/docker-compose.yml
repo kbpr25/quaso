@@ -1,0 +1,45 @@
+services:
+  # Local PostgreSQL (mirrors Neon in production)
+  postgres:
+    image: postgres:16-alpine
+    container_name: quaso-postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: quaso
+      POSTGRES_USER: quaso
+      POSTGRES_PASSWORD: quaso_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U quaso' ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Local Redis (mirrors Upstash in production)
+  redis:
+    image: redis:7-alpine
+    container_name: quaso-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ 'CMD', 'redis-cli', 'ping' ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  # Qdrant — vector DB (uncomment when starting Phase 8)
+  # qdrant:
+  #   image: qdrant/qdrant:latest
+  #   container_name: quaso-qdrant
+  #   ports:
+  #     - '6333:6333'
+  #     - '6334:6334'
+  #   volumes:
+  #     - qdrant_data:/qdrant/storage
+
+volumes:
+  postgres_data:
+  redis_data: # qdrant_data:
